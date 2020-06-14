@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>HKH Dashboard</title>
+    <title>PIP Chat</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -43,12 +43,6 @@
 
 
                 <ul class="nav">
-
-                    <li>
-                        <a href="/dashboard/"><i class="pe-7s-user"></i>
-                        <p>Invite codes: 3</p>
-                      </a>
-                    </li>
                     <li>
                         <a href="/chat/{{ data }}">
                             <i class="pe-7s-note2"></i>
@@ -99,29 +93,30 @@
                             <li>
                             </li>
                             <li>
-                                <div class="md-form mb-3 mt-0">
-                                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                                <div style="padding-top:5%;" class="md-form mb-3 mt-0">
+                                    <input class="form-control" type="text" placeholder="Search" aria-label="Search Users">
                                 </div>
                             </li>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
 
+                            
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
+                                    <i class="pe-7s-user"></i>
                                     <b class="caret hidden-lg hidden-md"></b>
                                     <p class="hidden-lg hidden-md">
-                                        5 Notifications
+                                        Invite Codes 
                                         <b class="caret"></b>
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/notifications/">message</a></li>
-                                    <li><a href="/maps/">Aid Needed!</a></li>
-                                    <li><a href="dashboard">Welcome!</a></li>
-                                    <li><a href="#">Tutorial</a></li>
+                                    <li>Template Tag</li>
+                                    <li>Templat Tag</li>
+                                
                                 </ul>
+
                             </li>
                             <li>
                                 <a href="/dashboard/">

@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>HKH Dashboard</title>
+    <title>PIP Dashboard</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -37,7 +37,7 @@
 <body>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="{% static 'assets/img/logo.png' %}">
+        <div class="sidebar" data-color="white" data-image="{% static 'assets/img/logo.png' %}">
 
             <div class="sidebar-wrapper">
               <!--  <div class="logo">
@@ -47,12 +47,6 @@
                 </div>-->
 
                 <ul class="nav">
-
-                    <li><a href="#">
-                        <i class="pe-7s-user"></i>
-                        <p>Invite codes: 3</p>
-                      </a>
-                    </li>
                     <li>
                         <a href="/notifications/">
                             <i class="pe-7s-bell"></i>
@@ -108,18 +102,17 @@
 
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
+                                    <i class="pe-7s-user"></i>
                                     <b class="caret hidden-lg hidden-md"></b>
                                     <p class="hidden-lg hidden-md">
-                                        5 Notifications
+                                        Invite Codes 
                                         <b class="caret"></b>
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/notifications/">message</a></li>
-                                    <li><a href="/maps/">Aid Needed!</a></li>
-                                    <li><a href="dashboard">Welcome!</a></li>
-                                    <li><a href="#">Tutorial</a></li>
+                                    <li>Template Tag</li>
+                                    <li>Templat Tag</li>
+                                
                                 </ul>
 
                             </li>
@@ -362,7 +355,7 @@
 
         $.notify({
             icon: 'pe-7s-gift',
-            message: "Please Protest Safetly. CDC's Guidelines Here: find cdc link and paste "
+            message: "Please Protest Safetly. CDC's Guidelines Here:https://www.cdc.gov/coronavirus/2019-ncov/daily-life-coping/activities.html"
 
         }, {
             type: 'info',

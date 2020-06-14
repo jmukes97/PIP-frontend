@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <title>HKH Notifications</title>
+    <title>PIP Notifications</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
@@ -37,17 +37,11 @@
 <body>
 
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="{% static 'assets/img/sidebar-5.jpg' %}">
+        <div class="sidebar" data-color="white" data-image="{% static 'assets/img/logo.png' %}">
 
             <div class="sidebar-wrapper">
 
                 <ul class="nav">
-
-                    <li><a href="#">
-                        <i class="pe-7s-user"></i>
-                        <p>Invite codes: 3</p>
-                      </a>
-                    </li>
                     <li>
                         <a href="/notifications/">
                             <i class="pe-7s-bell"></i>
@@ -94,29 +88,28 @@
                         <ul class="nav navbar-nav navbar-left">
 
                             <li>
-                                <div class="md-form mb-3 mt-0">
-                                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                                </div>
+                               
                             </li>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
 
+
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
+                                    <i class="pe-7s-user"></i>
                                     <b class="caret hidden-lg hidden-md"></b>
                                     <p class="hidden-lg hidden-md">
-                                        5 Notifications
+                                        Invite Codes 
                                         <b class="caret"></b>
                                     </p>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="/notifications/">message</a></li>
-                                    <li><a href="/maps/">Aid Needed!</a></li>
-                                    <li><a href="dashboard">Welcome!</a></li>
-                                    <li><a href="#">Tutorial</a></li>
+                                    <li>Template Tag</li>
+                                    <li>Templat Tag</li>
+                                
                                 </ul>
+
                             </li>
                             <li>
                                 <a href="/dashboard/">
@@ -183,37 +176,7 @@
                             </div>
                             <br>
                             <br>
-                            <div class="places-buttons">
-                                <div class="row">
-                                    <div class="col-md-6 col-md-offset-3 text-center">
-                                        <h5>Notifications Places
-                                            <p class="category">Click to view notifications</p>
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 col-md-offset-3">
-                                        <button class="btn btn-default btn-block" onclick="demo.showNotification('top','left')">Top Left</button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-default btn-block" onclick="demo.showNotification('top','center')">Top Center</button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-default btn-block" onclick="demo.showNotification('top','right')">Top Right</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-2 col-md-offset-3">
-                                        <button class="btn btn-default btn-block" onclick="demo.showNotification('bottom','left')">Bottom Left</button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-default btn-block" onclick="demo.showNotification('bottom','center')">Bottom Center</button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-default btn-block" onclick="demo.showNotification('bottom','right')">Bottom Right</button>
-                                    </div>
-                                </div>
-                            </div>
+               
                         </div>
                     </div>
                 </div>
