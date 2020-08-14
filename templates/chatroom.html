@@ -1,0 +1,192 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>HKH Chat</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+        integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'chatroom.css' %}">
+</head>
+
+<body>
+
+    <input type="hidden" id="username" name="username" value="{{ username }}">
+    <input type="hidden" id="code" name="code" value="{{ code }}">
+
+
+    <div class="jumbotron m-0 p-0 bg-transparent">
+        <div class="row m-0 p-0 position-relative">
+            <div class="col-12 p-0 m-0 position-absolute" style="right: 0px;">
+                <div class="card border-0 rounded"
+                    style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10), 0 6px 10px 0 rgba(0, 0, 0, 0.01); overflow: hidden; height: 100vh;">
+
+                    <div class="card-header p-1 bg-light border border-top-0 border-left-0 border-right-0"
+                        style="color: rgba(96, 125, 139,1.0);">
+
+                        <img class="rounded float-left" style="width: 50px; height: 50px;"
+                            src="frontend/HKH/BS3/assets/img/default-avatar.png" />
+
+                        <h6 class="float-left" style="margin: 0px; margin-left: 10px;"> Yusuf Bulgurc</h6>
+
+                    </div>
+
+                    <div class="card bg-sohbet border-0 m-0 p-0" style="height: 100vh;">
+                        <div id="sohbet" class="card border-0 m-0 p-0 position-relative bg-transparent"
+                            style="overflow-y: auto; height: 100vh;">
+
+                            {% for item in data %}
+                            {% if item.1 == username %}
+                            <div class="balon1 p-2 m-0 position-relative" data-is="You - 3:20 pm">
+                                <a class="float-right"> {{ item.3 }} </a>
+                            </div>
+                            {% else %}
+                            <div class="balon2 p-2 m-0 position-relative" data-is="Yusuf - 3:22 pm">
+                                <a class="float-left sohbet2"> {{ item.3 }} </a>
+                            </div>
+                            {% endif %}
+
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <div class="w-100 card-footer p-0 bg-light border border-bottom-0 border-left-0 border-right-0">
+
+                        <div class="m-0 p-0" autocomplete="off">
+
+                            <div class="row m-0 p-0">
+                                <div class="col-9 m-0 p-1">
+
+                                    <input id="textInput" class="mw-100 border rounded form-control" type="text"
+                                        name="text" title="Type a message..." placeholder="Type a message..." required>
+
+                                </div>
+                                <div class="col-3 m-0 p-1">
+
+                                    <button onclick="sendMessage()"
+                                        class="btn btn-outline-secondary rounded border w-100" title="Gönder!"
+                                        style="padding-right: 16px;"><i class="fa fa-paper-plane"
+                                            aria-hidden="true"></i>Send Message</button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        let username = document.getElementById("username").value;
+        let chatCode = document.getElementById("code").value;
+
+        let ws = new WebSocket('ws://18.224.57.65:8080');
+
+        ws.onopen = function () {
+            document.body.style.backgroundColor = '#cfc';
+        };
+
+        ws.onclose = function () {
+            //document.body.style.backgroundColor = null;
+            ws = new WebSocket('ws://18.224.57.65:8080');
+
+        };
+
+        ws.onmessage = function (event) {
+            // Parses the JSON data received from Django
+            let eventData = JSON.parse(event.data);
+            console.log(eventData);
+            // Generates the ids needed for the messages to be displayed to the user
+            let messageID = "message" + count;
+            let messageLocationID = "messageLocation" + count;
+
+            console.log(messageID + ", " + messageLocationID)
+
+            // Create the location where the next message will be displayed
+            let newDiv = document.createElement('div');
+            newDiv.setAttribute('id', messageLocationID);
+            console.log(document.getElementById('sohbet').appendChild(newDiv))
+
+            // Displays the message to the user
+            let result = "";
+            if (username === eventData.username) {
+                result = document.getElementById(messageLocationID).innerHTML =
+                    '<div class="balon1 p-2 m-0 position-relative"' +
+                    'data-is="You - 3:20 pm">' +
+                    '<a class="float-right" id="' + messageID + '"></a>' +
+                    '</div >'
+            }
+
+            else {
+                result = document.getElementById(messageLocationID).innerHTML =
+                    '<div class="balon2 p-2 m-0 position-relative"' +
+                    'data-is="You - 3:20 pm">' +
+                    '<a class="float-left sohbet2" id="' + messageID + '"></a>' +
+                    '</div >'
+            }
+
+            console.log(result);
+            document.getElementById(messageID).textContent = eventData.message;
+            count++;
+        };
+
+        let sendMessage = function () {
+            let jsonObject = {
+                from: username,
+                code: chatCode,
+                message: document.getElementById("textInput").value,
+            };
+
+            document.getElementById("textInput").value = "";
+            console.log(jsonObject)
+            ws.send(JSON.stringify(jsonObject));
+            location.reload();
+        }
+
+        setInterval(function () {
+            if (ws.readyState === 1) {
+                location.reload()
+            }
+        }, 5000);
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+        integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+</body>
+
+</html>

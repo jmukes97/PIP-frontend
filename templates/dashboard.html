@@ -1,0 +1,376 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>HKH Dashboard</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="{% static 'assets/css/animate.min.css' %}" rel="stylesheet" />
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="{% static 'assets/css/light-bootstrap-dashboard.css' %}" rel="stylesheet" />
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="{% static 'assets/css/demo.css' %}" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="{% static 'assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <div class="sidebar" data-color="purple" data-image="{% static 'assets/img/logo.png' %}">
+
+            <div class="sidebar-wrapper">
+              <!--  <div class="logo">
+                    <a href="/dashboard/"><img id="logoicon" src="{% static 'assets/img/hkflag.png' %}"
+                            class="simple text"></a>
+                    HKH
+                </div>-->
+
+                <ul class="nav">
+
+                    <li><a href="#">
+                        <i class="pe-7s-user"></i>
+                        <p>Invite codes: 3</p>
+                      </a>
+                    </li>
+                    <li>
+                        <a href="/notifications/">
+                            <i class="pe-7s-bell"></i>
+                            <p>Notifications</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/chat/{{ data }}">
+                            <i class="pe-7s-note2"></i>
+                            <p>Messages</p>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="/maps/">
+                            <i class="pe-7s-map-marker"></i>
+                            <p>Maps</p>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="/login/">
+                            <i class="pe-7s-graph"></i>
+                            <p>Log Out</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <nav class="navbar navbar-default navbar-fixed">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+
+
+                            <li>
+                              
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li class="dropdown">
+                                <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+                                    <p class="hidden-lg hidden-md">
+                                        5 Notifications
+                                        <b class="caret"></b>
+                                    </p>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/notifications/">message</a></li>
+                                    <li><a href="/maps/">Aid Needed!</a></li>
+                                    <li><a href="dashboard">Welcome!</a></li>
+                                    <li><a href="#">Tutorial</a></li>
+                                </ul>
+
+                            </li>
+                            <li>
+                              <a class="navbar-brand" href="#">Dashboard</a>
+                            </li>
+
+
+                            <li class="separator hidden-lg"></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+
+                                <div class="header">
+                                    <h4 class="title">Current Events</h4>
+                                    <p class="category">Last Campaign Rating</p>
+                                </div>
+                                <div class="content">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="header">
+                                    <h4 class="title">Maps</h4>
+                                    <p class="category">Locate supplies, aid, and more</p>
+                                </div>
+                                <div class="content">
+                                    <div class="footer">
+                                        <div class="legend">
+                                            <i class="fa fa-circle text-info"></i> Police
+                                            <i class="fa fa-circle text-danger"></i> Need Aid!
+                                            <i class="fa fa-circle text-warning"></i> Group Ups
+                                        </div>
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="fa fa-history"></i> Updated 3 minutes ago
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card ">
+                                <div class="header">
+                                    <h4 class="title">Ratings</h4>
+                                    <p class="category">Ratings of recent events</p>
+                                </div>
+                                <div class="content">
+                                    <div id="chartActivity" class="ct-chart"></div>
+
+                                    <div class="footer">
+                                        <div class="legend">
+                                            <i class="fa fa-circle text-info"></i> Number Of Protests
+                                            <i class="fa fa-circle text-danger"></i> Police Brutality
+                                        </div>
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="fa fa-check"></i> Data information certified
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card ">
+                                <div class="header">
+                                    <h4 class="title">Checklist</h4>
+                                    <p class="category">Leave Prepared!</p>
+                                </div>
+                                <div class="content">
+                                    <div class="table-full-width">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checkbox">
+                                                            <input id="checkbox1" type="checkbox">
+                                                            <label for="checkbox1"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>Band-Aids</td>
+                                                    <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checkbox">
+                                                            <input id="checkbox2" type="checkbox" checked>
+                                                            <label for="checkbox2"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>Alcohol</td>
+                                                    <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checkbox">
+                                                            <input id="checkbox3" type="checkbox">
+                                                            <label for="checkbox3"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>Phone Charger
+                                                    </td>
+                                                    <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checkbox">
+                                                            <input id="checkbox4" type="checkbox" checked>
+                                                            <label for="checkbox4"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>Friends</td>
+                                                    <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checkbox">
+                                                            <input id="checkbox5" type="checkbox">
+                                                            <label for="checkbox5"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>A Jacket</td>
+                                                    <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="checkbox">
+                                                            <input id="checkbox6" type="checkbox" checked>
+                                                            <label for="checkbox6"></label>
+                                                        </div>
+                                                    </td>
+                                                    <td>Umbrella</td>
+                                                    <td class="td-actions text-right">
+                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                                            <i class="fa fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="footer">
+                                        <hr>
+                                        <div class="stats">
+                                            <i class="fa fa-history"></i> Updated 3 minutes ago
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="{% static 'assets/js/jquery.3.2.1.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="{% static 'assets/js/chartist.min.js' %}"></script>
+
+<!--  Notifications Plugin    -->
+<script src="{% static 'assets/js/bootstrap-notify.js' %}"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="{% static 'assets/js/light-bootstrap-dashboard.js' %}"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="{% static 'assets/js/demo.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        demo.initChartist();
+
+        $.notify({
+            icon: 'pe-7s-gift',
+            message: "Please Protest Safetly. CDC's Guidelines Here: find cdc link and paste "
+
+        }, {
+            type: 'info',
+            timer: 4000
+        });
+
+    });
+
+</script>
+
+</html>
