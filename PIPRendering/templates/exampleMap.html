@@ -23,19 +23,10 @@
 
             const router = platform.getRoutingService();
             const geocoder = platform.getGeocodingService(); 
-           
+        
             var location;
 
-            function getLocalCoordinates(position)
-            {
-                location = { lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                }
-            }
-
-            navigator.geolocation.getCurrentPosition(getLocalCoordinates);
-            
-            console.log(location);
+            var coordinates = navigator.geolocation.getCurrentPosition(success);
             var map = new H.Map(
                 document.getElementById('mapContainer'),
                 maptypes.vector.normal.map,
@@ -43,10 +34,40 @@
                     zoom: 16,
                     center:
                     { 
-                        lat: currentLocation.latitude,
-                        lng: currentLocation.longitude
+                        lat: coordinates.lat,
+                        lng: coordinates.lng
                     }
-                });
+                }
+            );
+
+            function success(position) {
+                location = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+            }        
+
+        //     var location;
+        //     function getLocalCoordinates(position)
+        //     {
+        //         location = { lat: position.coords.latitude,
+        //             lng: position.coords.longitude
+        //         }
+        //     }
+
+        //    navigator.geolocation.getCurrentPosition(getLocalCoordinates);
+
+        //     var map = new H.Map(
+        //         document.getElementById('mapContainer'),
+        //         maptypes.vector.normal.map,
+        //         {
+        //             zoom: 16,
+        //             center:
+        //             { 
+        //                 lat: currentLocation.latitude,
+        //                 lng: currentLocation.longitude
+        //             }
+        //         });
                 
       </script>
     </body>
