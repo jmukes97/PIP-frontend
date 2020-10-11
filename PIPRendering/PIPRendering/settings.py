@@ -25,7 +25,9 @@ SECRET_KEY = 'cru7es3^wad74zt5poaq7z4c_as_a&xe=g+fv79v38ld(3dy6s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1',
+'192.168.1.147',
+'172.18.110.17']
 
 STATICFILES_DIRS = [
     "templates",
