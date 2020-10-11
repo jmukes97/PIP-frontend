@@ -27,6 +27,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
+STATICFILES_DIRS = [
+    "templates",
+]
 
 # Application definition
 

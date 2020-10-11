@@ -24,9 +24,18 @@
             const router = platform.getRoutingService();
             const geocoder = platform.getGeocodingService(); 
         
-            var location;
+            var location; //THIS OBJECT NEEDS TO BE POPULATED...
+            
+            function getGPS(position) {
+                location = {
+                    lat: position.coords.latitude, //WITH THE DATA THAT'S HERE,  WHICH IS CALLED...
+                    lng: position.coords.longitude
+                };
 
-            var coordinates = navigator.geolocation.getCurrentPosition(success);
+            }  
+            
+            var coordinates = navigator.geolocation.getCurrentPosition(getGPS); //RIGHT HERE... WHAT AM I DOING SYNTAX-WISE? PLEASE TEXT ME OR SOMETHING.E
+            
             var map = new H.Map(
                 document.getElementById('mapContainer'),
                 maptypes.vector.normal.map,
@@ -40,12 +49,8 @@
                 }
             );
 
-            function success(position) {
-                location = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-            }        
+
+                 
 
         //     var location;
         //     function getLocalCoordinates(position)
